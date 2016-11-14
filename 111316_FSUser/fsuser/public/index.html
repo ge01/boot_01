@@ -21,6 +21,12 @@
             <th>Last Name</th>
           </tr>
         </thead>
+        <tbody>
+          <tr ng-repeat="user in fsuser">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>         
+          </tr>
+        </tbody>
       </table>
 
     </div>
