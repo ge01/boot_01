@@ -8,23 +8,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <meta charset="utf-8">
-    <title>Get User Name App</title>
+    <title>User Name App</title>
   </head>
   <body>
     <div class="container" ng-controller="AppCtrl">
-      <h1>Get User Name App</h1>
+      <h1>Enter User Name App</h1>
 
       <table class="table">
         <thead>
           <tr>
             <th>First Name</th>
-            <th>Last Name</th>
+            <th>Email</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td><input class="form-control" ng-model="user.name"  /></td>
+            <td><input class="form-control" ng-model="user.email" /></td>
+            <td><button class="btn btn-primary" ng-click="addUser()">Add User</button></td>
+          </tr>
           <tr ng-repeat="user in fsuser">
             <td>{{user.name}}</td>
-            <td>{{user.email}}</td>         
+            <td>{{user.email}}</td>
           </tr>
         </tbody>
       </table>
