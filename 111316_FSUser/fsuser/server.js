@@ -2,8 +2,11 @@ var express = require('express');
 var app = express();
 var mongojs = require('mongojs');
 var db = mongojs('fsuser', ['fsuser']);
+var bodyParser = require('body-parser');
+
 
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.json());
 
 app.get('/fsuser', function(req, res){
   console.log("I received a GET request");
@@ -12,6 +15,10 @@ app.get('/fsuser', function(req, res){
     console.log(docs);
     res.json(docs);
   });
+});
+
+app.post('/fsuser', function(req,res){
+  console.log(req.body);
 });
 
 app.listen(3000);

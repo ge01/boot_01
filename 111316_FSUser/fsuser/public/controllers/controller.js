@@ -9,5 +9,6 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 
   $scope.addUser = function(){
     console.log($scope.user);
+    $http.post('/fsuser', $scope.user);
   };
 }]);
