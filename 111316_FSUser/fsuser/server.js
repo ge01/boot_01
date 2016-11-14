@@ -5,6 +5,7 @@ var db = mongojs('fsuser', ['fsuser']);
 var bodyParser = require('body-parser');
 
 
+
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
@@ -19,6 +20,9 @@ app.get('/fsuser', function(req, res){
 
 app.post('/fsuser', function(req,res){
   console.log(req.body);
+  db.fsuser.insert(req.body, function(err, doc){
+    res.json(doc);
+  });
 });
 
 app.listen(3000);
