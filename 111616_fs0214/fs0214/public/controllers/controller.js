@@ -19,4 +19,11 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
       refresh();
     });
   };
+
+  $scope.remove = function(id){
+    console.log(id);
+    $http.delete('/fs0214/' + id).success(function(response){
+      refresh();
+    });
+  };
 }]);
