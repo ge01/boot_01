@@ -19,8 +19,16 @@
           <tr>
             <th>Salary</th>
             <th>Bonus</th>
+            <th>Pay</th>
           </tr>
         </thead>
+        <tbody>
+          <tr ng-repeat="data in fs0214">
+            <td>{{data.salary}}</td>
+            <td>{{data.bonus}}</td>
+            <td>{{data.pay}}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
 
