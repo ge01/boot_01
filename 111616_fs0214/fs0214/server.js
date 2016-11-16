@@ -1,24 +1,26 @@
 var express = require('express');
 var app = express();
+var mongojs = require('mongojs');
+var db = mongojs('fs0214', ['fs0214']);
+var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.json());
 
 app.get('/fs0214', function(req,res){
   console.log("I received a GET request");
 
-    data1 = {
-      salary: '2500.0',
-      bonus: '1200.0',
-      pay: '3700.0'
-    };
-    data2 = {
-      salary: '2000',
-      bonus: '1000',
-      pay: '3000'
-    };
+  db.fs0214.find(function(err, docs){
+    console.log(docs);
+    res.json(docs);
+  });
+});
 
-    var fs0214 = [data1, data2];
-    res.json(fs0214);
+app.post('/fs0214', function(req, res){
+  console.log(req.body);
+  db.fs0214.insert(req.body, function(err, doc){
+    res.json(doc);
+  });
 });
 
 app.listen(3000);
