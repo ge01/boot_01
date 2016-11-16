@@ -11,9 +11,14 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
   };
 
   refresh();
+  //$scope.parseInt = parseInt;
 
   $scope.addData = function(){
+
     console.log($scope.data);
+    //console.log("Salary: " + $scope.data.salary);
+    $scope.data.pay = parseInt($scope.data.salary) + parseInt($scope.data.bonus);
+
     $http.post('/fs0214', $scope.data).success(function(response){
       console.log(response);
       refresh();
