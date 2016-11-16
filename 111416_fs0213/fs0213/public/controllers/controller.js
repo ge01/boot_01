@@ -7,5 +7,11 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.fs0213 = response;
   });
 
+  $scope.addPerson = function(){
+    console.log($scope.person);
+    $http.post('/fs0213', $scope.fs0213).success(function(response){
+      console.log(response);
+    });
+  };
 
 }]);
