@@ -13,6 +13,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
   refresh();
 
   $scope.addData = function(){
+    $scope.data.salePrice = parseFloat($scope.data.originalPrice) - (parseFloat($scope.data.originalPrice) * parseFloat($scope.data.discount));
     console.log($scope.data);
     $http.post('/fs0215', $scope.data).success(function(response){
       console.log(response);
@@ -20,7 +21,12 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     });
   };
 
-
+  $scope.remove = function(id){
+    console.log(id);
+    $http.delete('/fs0215/' + id).success(function(response){
+      refresh();
+    });
+  };
 
 
 }]);
