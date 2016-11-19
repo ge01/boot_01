@@ -1,19 +1,26 @@
 var express = require('express');
 var app = express();
+var mongojs = require('mongojs');
+var db = mongojs('fs0215', ['fs0215']);
+var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.json());
 
 app.get('/fs0215', function(req, res){
   console.log("I received a GET request");
 
-  data1 = {
-    originalPrice: "100",
-    discount: "0.2",
-    salePrice: "80"
-  };
+  db.fs0215.find(function(err,docs){
+    console.log(docs);
+    res.json(docs);
+  });
+});
 
-  var fs0215 = [data1];
-  res.json(fs0215);
+app.post('/fs0215', function(req, res){
+  console.log(req.body);
+  db.fs0215.insert(req.body, function(err, doc){
+    res.json(doc);
+  });
 });
 
 app.listen(3000);
