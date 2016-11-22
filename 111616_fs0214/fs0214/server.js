@@ -1,7 +1,11 @@
 var express = require('express');
 var app = express();
+
+app.set('port', (process.env.PORT || 5000));
+
 var mongojs = require('mongojs');
-var db = mongojs('fs0214', ['fs0214']);
+// var db = mongojs('fs0214', ['fs0214']);
+var db =  mongojs('bob:bobby@s023520.mlab.com:23520/fs0214', ['fs0214'])
 var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + "/public"));
@@ -31,5 +35,8 @@ app.delete('/fs0214/:id', function(req, res){
   });
 });
 
-app.listen(3000);
-console.log("Server running on port 3000");
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+// console.log("Server running on port 3000");
