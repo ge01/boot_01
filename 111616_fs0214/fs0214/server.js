@@ -5,7 +5,8 @@ app.set('port', (process.env.PORT || 5000));
 
 var mongojs = require('mongojs');
 // var db = mongojs('fs0214', ['fs0214']);
-var db =  mongojs('bob:bobby@s023520.mlab.com:23520/fs0214', ['fs0214'])
+var MLAB_URI = process.env.MLAB_URI;
+var db = mongojs(MLAB_URI, ['fs0214']);
 var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + "/public"));
